@@ -1,0 +1,1267 @@
+define(['dart_sdk', 'packages/vector_math/hash.dart'], (function load__packages__vector_math__vector_math_64_dart(dart_sdk, packages__vector_math__hash$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const math = dart_sdk.math;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const typed_data = dart_sdk.typed_data;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const hash = packages__vector_math__hash$46dart.hash;
+  var vector_math_64 = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    ListOfint: () => (T.ListOfint = dart.constFn(core.List$(core.int)))(),
+    intToint: () => (T.intToint = dart.constFn(dart.fnType(core.int, [core.int])))(),
+    JSArrayOfdouble: () => (T.JSArrayOfdouble = dart.constFn(_interceptors.JSArray$(core.double)))(),
+    ListOfdouble: () => (T.ListOfdouble = dart.constFn(core.List$(core.double)))(),
+    JSArrayOfListOfdouble: () => (T.JSArrayOfListOfdouble = dart.constFn(_interceptors.JSArray$(T.ListOfdouble())))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _min: dart.privateName(vector_math_64, "_min"),
+    _max: dart.privateName(vector_math_64, "_max"),
+    _updateCenterAndHalfExtents: dart.privateName(vector_math_64, "_updateCenterAndHalfExtents"),
+    _center: dart.privateName(vector_math_64, "_center"),
+    _point0: dart.privateName(vector_math_64, "_point0"),
+    _point1: dart.privateName(vector_math_64, "_point1"),
+    _point2: dart.privateName(vector_math_64, "_point2"),
+    _point3: dart.privateName(vector_math_64, "_point3"),
+    $abs: dartx.abs,
+    _depth: dart.privateName(vector_math_64, "_depth"),
+    $matchAsPrefix: dartx.matchAsPrefix,
+    $floor: dartx.floor,
+    $rightShift: dartx['>>'],
+    $toRadixString: dartx.toRadixString,
+    $padLeft: dartx.padLeft,
+    $toDouble: dartx.toDouble,
+    $modulo: dartx['%'],
+    _plane0: dart.privateName(vector_math_64, "_plane0"),
+    _plane1: dart.privateName(vector_math_64, "_plane1"),
+    _plane2: dart.privateName(vector_math_64, "_plane2"),
+    _plane3: dart.privateName(vector_math_64, "_plane3"),
+    _plane4: dart.privateName(vector_math_64, "_plane4"),
+    _plane5: dart.privateName(vector_math_64, "_plane5"),
+    $_get: dartx._get,
+    _intersectsWithAabb3CheckPlane: dart.privateName(vector_math_64, "_intersectsWithAabb3CheckPlane"),
+    _normal: dart.privateName(vector_math_64, "_normal"),
+    axis: dart.privateName(vector_math_64, "IntersectionResult.axis"),
+    _m2storage: dart.privateName(vector_math_64, "_m2storage"),
+    $_set: dartx._set,
+    _v2storage: dart.privateName(vector_math_64, "_v2storage"),
+    $_equals: dartx._equals,
+    _m3storage: dart.privateName(vector_math_64, "_m3storage"),
+    _v3storage: dart.privateName(vector_math_64, "_v3storage"),
+    $length: dartx.length,
+    _m4storage: dart.privateName(vector_math_64, "_m4storage"),
+    _v4storage: dart.privateName(vector_math_64, "_v4storage"),
+    _qStorage: dart.privateName(vector_math_64, "_qStorage"),
+    _halfExtents: dart.privateName(vector_math_64, "_halfExtents"),
+    _axis0: dart.privateName(vector_math_64, "_axis0"),
+    _axis1: dart.privateName(vector_math_64, "_axis1"),
+    _axis2: dart.privateName(vector_math_64, "_axis2"),
+    $clamp: dartx.clamp,
+    constant: dart.privateName(vector_math_64, "Plane.constant"),
+    _origin: dart.privateName(vector_math_64, "_origin"),
+    _direction: dart.privateName(vector_math_64, "_direction"),
+    radius: dart.privateName(vector_math_64, "Sphere.radius"),
+    __SimplexNoise__perm: dart.privateName(vector_math_64, "_#SimplexNoise#_perm"),
+    __SimplexNoise__perm_isSet: dart.privateName(vector_math_64, "_#SimplexNoise#_perm#isSet"),
+    __SimplexNoise__permMod12: dart.privateName(vector_math_64, "_#SimplexNoise#_permMod12"),
+    __SimplexNoise__permMod12_isSet: dart.privateName(vector_math_64, "_#SimplexNoise#_permMod12#isSet"),
+    _perm: dart.privateName(vector_math_64, "_perm"),
+    _permMod12: dart.privateName(vector_math_64, "_permMod12"),
+    _dot2: dart.privateName(vector_math_64, "_dot2"),
+    _dot3: dart.privateName(vector_math_64, "_dot3"),
+    _dot4: dart.privateName(vector_math_64, "_dot4"),
+    $isInfinite: dartx.isInfinite,
+    $isNaN: dartx.isNaN,
+    $floorToDouble: dartx.floorToDouble,
+    $ceilToDouble: dartx.ceilToDouble,
+    $roundToDouble: dartx.roundToDouble
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var C = [];
+  var I = [
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/aabb2.dart",
+    "package:vector_math/vector_math_64.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/aabb3.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/colors.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/frustum.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/matrix2.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/matrix3.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/matrix4.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/obb3.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/plane.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/quad.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/quaternion.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/ray.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/sphere.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/third_party/noise.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/triangle.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/vector2.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/vector3.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/vector4.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/opengl.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/utilities.dart",
+    "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/vector_math-2.1.0/lib/src/vector_math_64/vector.dart"
+  ];
+  vector_math_64.Aabb2 = class Aabb2 extends core.Object {
+    get min() {
+      return this[S._min];
+    }
+    get max() {
+      return this[S._max];
+    }
+    get center() {
+      let t0;
+      t0 = this[S._min].clone();
+      return (() => {
+        t0.add(this[S._max]);
+        t0.scale(0.5);
+        return t0;
+      })();
+    }
+    static centerAndHalfExtents(center, halfExtents) {
+      let t0;
+      if (center == null) dart.nullFailed(I[0], 40, 46, "center");
+      if (halfExtents == null) dart.nullFailed(I[0], 40, 62, "halfExtents");
+      t0 = new vector_math_64.Aabb2.new();
+      return (() => {
+        t0.setCenterAndHalfExtents(center, halfExtents);
+        return t0;
+      })();
+    }
+    setCenterAndHalfExtents(center, halfExtents) {
+      let t0, t0$;
+      if (center == null) dart.nullFailed(I[0], 52, 40, "center");
+      if (halfExtents == null) dart.nullFailed(I[0], 52, 56, "halfExtents");
+      t0 = this[S._min];
+      (() => {
+        t0.setFrom(center);
+        t0.sub(halfExtents);
+        return t0;
+      })();
+      t0$ = this[S._max];
+      (() => {
+        t0$.setFrom(center);
+        t0$.add(halfExtents);
+        return t0$;
+      })();
+    }
+    copyCenterAndHalfExtents(center, halfExtents) {
+      let t0, t0$;
+      if (center == null) dart.nullFailed(I[0], 62, 41, "center");
+      if (halfExtents == null) dart.nullFailed(I[0], 62, 57, "halfExtents");
+      t0 = center;
+      (() => {
+        t0.setFrom(this[S._min]);
+        t0.add(this[S._max]);
+        t0.scale(0.5);
+        return t0;
+      })();
+      t0$ = halfExtents;
+      (() => {
+        t0$.setFrom(this[S._max]);
+        t0$.sub(this[S._min]);
+        t0$.scale(0.5);
+        return t0$;
+      })();
+    }
+    copyFrom(other) {
+      if (other == null) dart.nullFailed(I[0], 74, 23, "other");
+      this[S._min].setFrom(other[S._min]);
+      this[S._max].setFrom(other[S._max]);
+    }
+    [S._updateCenterAndHalfExtents]() {
+      return this.copyCenterAndHalfExtents(vector_math_64.Aabb2._center, vector_math_64.Aabb2._halfExtents);
+    }
+    transform(t) {
+      let t0, t0$, t0$0;
+      if (t == null) dart.nullFailed(I[0], 85, 26, "t");
+      this[S._updateCenterAndHalfExtents]();
+      t0 = t;
+      (() => {
+        t0.transform2(vector_math_64.Aabb2._center);
+        t0.absoluteRotate2(vector_math_64.Aabb2._halfExtents);
+        return t0;
+      })();
+      t0$ = this[S._min];
+      (() => {
+        t0$.setFrom(vector_math_64.Aabb2._center);
+        t0$.sub(vector_math_64.Aabb2._halfExtents);
+        return t0$;
+      })();
+      t0$0 = this[S._max];
+      (() => {
+        t0$0.setFrom(vector_math_64.Aabb2._center);
+        t0$0.add(vector_math_64.Aabb2._halfExtents);
+        return t0$0;
+      })();
+    }
+    rotate(t) {
+      let t0, t0$;
+      if (t == null) dart.nullFailed(I[0], 99, 23, "t");
+      this[S._updateCenterAndHalfExtents]();
+      t.absoluteRotate2(vector_math_64.Aabb2._halfExtents);
+      t0 = this[S._min];
+      (() => {
+        t0.setFrom(vector_math_64.Aabb2._center);
+        t0.sub(vector_math_64.Aabb2._halfExtents);
+        return t0;
+      })();
+      t0$ = this[S._max];
+      (() => {
+        t0$.setFrom(vector_math_64.Aabb2._center);
+        t0$.add(vector_math_64.Aabb2._halfExtents);
+        return t0$;
+      })();
+    }
+    transformed(t, out) {
+      let t0;
+      if (t == null) dart.nullFailed(I[0], 112, 29, "t");
+      if (out == null) dart.nullFailed(I[0], 112, 38, "out");
+      t0 = out;
+      return (() => {
+        t0.copyFrom(this);
+        t0.transform(t);
+        return t0;
+      })();
+    }
+    rotated(t, out) {
+      let t0;
+      if (t == null) dart.nullFailed(I[0], 118, 25, "t");
+      if (out == null) dart.nullFailed(I[0], 118, 34, "out");
+      t0 = out;
+      return (() => {
+        t0.copyFrom(this);
+        t0.rotate(t);
+        return t0;
+      })();
+    }
+    hull(other) {
+      if (other == null) dart.nullFailed(I[0], 124, 19, "other");
+      vector_math_64.Vector2.min(this[S._min], other[S._min], this[S._min]);
+      vector_math_64.Vector2.max(this[S._max], other[S._max], this[S._max]);
+    }
+    hullPoint(point) {
+      if (point == null) dart.nullFailed(I[0], 130, 26, "point");
+      vector_math_64.Vector2.min(this[S._min], point, this[S._min]);
+      vector_math_64.Vector2.max(this[S._max], point, this[S._max]);
+    }
+    containsAabb2(other) {
+      if (other == null) dart.nullFailed(I[0], 136, 28, "other");
+      let otherMax = other[S._max];
+      let otherMin = other[S._min];
+      return dart.notNull(this[S._min].x) < dart.notNull(otherMin.x) && dart.notNull(this[S._min].y) < dart.notNull(otherMin.y) && dart.notNull(this[S._max].y) > dart.notNull(otherMax.y) && dart.notNull(this[S._max].x) > dart.notNull(otherMax.x);
+    }
+    containsVector2(other) {
+      if (other == null) dart.nullFailed(I[0], 147, 32, "other");
+      return dart.notNull(this[S._min].x) < dart.notNull(other.x) && dart.notNull(this[S._min].y) < dart.notNull(other.y) && dart.notNull(this[S._max].x) > dart.notNull(other.x) && dart.notNull(this[S._max].y) > dart.notNull(other.y);
+    }
+    intersectsWithAabb2(other) {
+      if (other == null) dart.nullFailed(I[0], 154, 34, "other");
+      let otherMax = other[S._max];
+      let otherMin = other[S._min];
+      return dart.notNull(this[S._min].x) <= dart.notNull(otherMax.x) && dart.notNull(this[S._min].y) <= dart.notNull(otherMax.y) && dart.notNull(this[S._max].x) >= dart.notNull(otherMin.x) && dart.notNull(this[S._max].y) >= dart.notNull(otherMin.y);
+    }
+    intersectsWithVector2(other) {
+      if (other == null) dart.nullFailed(I[0], 165, 38, "other");
+      return dart.notNull(this[S._min].x) <= dart.notNull(other.x) && dart.notNull(this[S._min].y) <= dart.notNull(other.y) && dart.notNull(this[S._max].x) >= dart.notNull(other.x) && dart.notNull(this[S._max].y) >= dart.notNull(other.y);
+    }
+  };
+  (vector_math_64.Aabb2.new = function() {
+    this[S._min] = new vector_math_64.Vector2.zero();
+    this[S._max] = new vector_math_64.Vector2.zero();
+    ;
+  }).prototype = vector_math_64.Aabb2.prototype;
+  (vector_math_64.Aabb2.copy = function(other) {
+    if (other == null) dart.nullFailed(I[0], 30, 20, "other");
+    this[S._min] = vector_math_64.Vector2.copy(other[S._min]);
+    this[S._max] = vector_math_64.Vector2.copy(other[S._max]);
+    ;
+  }).prototype = vector_math_64.Aabb2.prototype;
+  (vector_math_64.Aabb2.minMax = function(min, max) {
+    if (min == null) dart.nullFailed(I[0], 35, 24, "min");
+    if (max == null) dart.nullFailed(I[0], 35, 37, "max");
+    this[S._min] = vector_math_64.Vector2.copy(min);
+    this[S._max] = vector_math_64.Vector2.copy(max);
+    ;
+  }).prototype = vector_math_64.Aabb2.prototype;
+  (vector_math_64.Aabb2.fromBuffer = function(buffer, offset) {
+    if (buffer == null) dart.nullFailed(I[0], 46, 31, "buffer");
+    if (offset == null) dart.nullFailed(I[0], 46, 43, "offset");
+    this[S._min] = new vector_math_64.Vector2.fromBuffer(buffer, offset);
+    this[S._max] = new vector_math_64.Vector2.fromBuffer(buffer, dart.notNull(offset) + 8 * 2);
+    ;
+  }).prototype = vector_math_64.Aabb2.prototype;
+  dart.addTypeTests(vector_math_64.Aabb2);
+  dart.addTypeCaches(vector_math_64.Aabb2);
+  dart.setMethodSignature(vector_math_64.Aabb2, () => ({
+    __proto__: dart.getMethods(vector_math_64.Aabb2.__proto__),
+    setCenterAndHalfExtents: dart.fnType(dart.void, [vector_math_64.Vector2, vector_math_64.Vector2]),
+    copyCenterAndHalfExtents: dart.fnType(dart.void, [vector_math_64.Vector2, vector_math_64.Vector2]),
+    copyFrom: dart.fnType(dart.void, [vector_math_64.Aabb2]),
+    [S._updateCenterAndHalfExtents]: dart.fnType(dart.void, []),
+    transform: dart.fnType(dart.void, [vector_math_64.Matrix3]),
+    rotate: dart.fnType(dart.void, [vector_math_64.Matrix3]),
+    transformed: dart.fnType(vector_math_64.Aabb2, [vector_math_64.Matrix3, vector_math_64.Aabb2]),
+    rotated: dart.fnType(vector_math_64.Aabb2, [vector_math_64.Matrix3, vector_math_64.Aabb2]),
+    hull: dart.fnType(dart.void, [vector_math_64.Aabb2]),
+    hullPoint: dart.fnType(dart.void, [vector_math_64.Vector2]),
+    containsAabb2: dart.fnType(core.bool, [vector_math_64.Aabb2]),
+    containsVector2: dart.fnType(core.bool, [vector_math_64.Vector2]),
+    intersectsWithAabb2: dart.fnType(core.bool, [vector_math_64.Aabb2]),
+    intersectsWithVector2: dart.fnType(core.bool, [vector_math_64.Vector2])
+  }));
+  dart.setGetterSignature(vector_math_64.Aabb2, () => ({
+    __proto__: dart.getGetters(vector_math_64.Aabb2.__proto__),
+    min: vector_math_64.Vector2,
+    max: vector_math_64.Vector2,
+    center: vector_math_64.Vector2
+  }));
+  dart.setLibraryUri(vector_math_64.Aabb2, I[1]);
+  dart.setFieldSignature(vector_math_64.Aabb2, () => ({
+    __proto__: dart.getFields(vector_math_64.Aabb2.__proto__),
+    [S._min]: dart.finalFieldType(vector_math_64.Vector2),
+    [S._max]: dart.finalFieldType(vector_math_64.Vector2)
+  }));
+  dart.defineLazy(vector_math_64.Aabb2, {
+    /*vector_math_64.Aabb2._center*/get _center() {
+      return new vector_math_64.Vector2.zero();
+    },
+    /*vector_math_64.Aabb2._halfExtents*/get _halfExtents() {
+      return new vector_math_64.Vector2.zero();
+    }
+  }, false);
+  vector_math_64.Aabb3 = class Aabb3 extends core.Object {
+    get min() {
+      return this[S._min];
+    }
+    get max() {
+      return this[S._max];
+    }
+    get center() {
+      let t0;
+      t0 = this[S._min].clone();
+      return (() => {
+        t0.add(this[S._max]);
+        t0.scale(0.5);
+        return t0;
+      })();
+    }
+    static fromSphere(sphere) {
+      let t0;
+      if (sphere == null) dart.nullFailed(I[2], 37, 35, "sphere");
+      t0 = new vector_math_64.Aabb3.new();
+      return (() => {
+        t0.setSphere(sphere);
+        return t0;
+      })();
+    }
+    static fromTriangle(triangle) {
+      let t0;
+      if (triangle == null) dart.nullFailed(I[2], 40, 39, "triangle");
+      t0 = new vector_math_64.Aabb3.new();
+      return (() => {
+        t0.setTriangle(triangle);
+        return t0;
+      })();
+    }
+    static fromQuad(quad) {
+      let t0;
+      if (quad == null) dart.nullFailed(I[2], 44, 31, "quad");
+      t0 = new vector_math_64.Aabb3.new();
+      return (() => {
+        t0.setQuad(quad);
+        return t0;
+      })();
+    }
+    static fromObb3(obb) {
+      let t0;
+      if (obb == null) dart.nullFailed(I[2], 47, 31, "obb");
+      t0 = new vector_math_64.Aabb3.new();
+      return (() => {
+        t0.setObb3(obb);
+        return t0;
+      })();
+    }
+    static fromRay(ray, limitMin, limitMax) {
+      let t0;
+      if (ray == null) dart.nullFailed(I[2], 51, 29, "ray");
+      if (limitMin == null) dart.nullFailed(I[2], 51, 41, "limitMin");
+      if (limitMax == null) dart.nullFailed(I[2], 51, 58, "limitMax");
+      t0 = new vector_math_64.Aabb3.new();
+      return (() => {
+        t0.setRay(ray, limitMin, limitMax);
+        return t0;
+      })();
+    }
+    static centerAndHalfExtents(center, halfExtents) {
+      let t0;
+      if (center == null) dart.nullFailed(I[2], 55, 46, "center");
+      if (halfExtents == null) dart.nullFailed(I[2], 55, 62, "halfExtents");
+      t0 = new vector_math_64.Aabb3.new();
+      return (() => {
+        t0.setCenterAndHalfExtents(center, halfExtents);
+        return t0;
+      })();
+    }
+    setCenterAndHalfExtents(center, halfExtents) {
+      let t0, t0$;
+      if (center == null) dart.nullFailed(I[2], 67, 40, "center");
+      if (halfExtents == null) dart.nullFailed(I[2], 67, 56, "halfExtents");
+      t0 = this[S._min];
+      (() => {
+        t0.setFrom(center);
+        t0.sub(halfExtents);
+        return t0;
+      })();
+      t0$ = this[S._max];
+      (() => {
+        t0$.setFrom(center);
+        t0$.add(halfExtents);
+        return t0$;
+      })();
+    }
+    setSphere(sphere) {
+      let t0, t0$;
+      if (sphere == null) dart.nullFailed(I[2], 77, 25, "sphere");
+      t0 = this[S._min];
+      (() => {
+        t0.splat(-dart.notNull(sphere.radius));
+        t0.add(sphere[S._center]);
+        return t0;
+      })();
+      t0$ = this[S._max];
+      (() => {
+        t0$.splat(sphere.radius);
+        t0$.add(sphere[S._center]);
+        return t0$;
+      })();
+    }
+    setTriangle(triangle) {
+      if (triangle == null) dart.nullFailed(I[2], 87, 29, "triangle");
+      this[S._min].setValues(math.min(core.double, triangle[S._point0].x, math.min(core.double, triangle[S._point1].x, triangle[S._point2].x)), math.min(core.double, triangle[S._point0].y, math.min(core.double, triangle[S._point1].y, triangle[S._point2].y)), math.min(core.double, triangle[S._point0].z, math.min(core.double, triangle[S._point1].z, triangle[S._point2].z)));
+      this[S._max].setValues(math.max(core.double, triangle[S._point0].x, math.max(core.double, triangle[S._point1].x, triangle[S._point2].x)), math.max(core.double, triangle[S._point0].y, math.max(core.double, triangle[S._point1].y, triangle[S._point2].y)), math.max(core.double, triangle[S._point0].z, math.max(core.double, triangle[S._point1].z, triangle[S._point2].z)));
+    }
+    setQuad(quad) {
+      if (quad == null) dart.nullFailed(I[2], 105, 21, "quad");
+      this[S._min].setValues(math.min(core.double, quad[S._point0].x, math.min(core.double, quad[S._point1].x, math.min(core.double, quad[S._point2].x, quad[S._point3].x))), math.min(core.double, quad[S._point0].y, math.min(core.double, quad[S._point1].y, math.min(core.double, quad[S._point2].y, quad[S._point3].y))), math.min(core.double, quad[S._point0].z, math.min(core.double, quad[S._point1].z, math.min(core.double, quad[S._point2].z, quad[S._point3].z))));
+      this[S._max].setValues(math.max(core.double, quad[S._point0].x, math.max(core.double, quad[S._point1].x, math.max(core.double, quad[S._point2].x, quad[S._point3].x))), math.max(core.double, quad[S._point0].y, math.max(core.double, quad[S._point1].y, math.max(core.double, quad[S._point2].y, quad[S._point3].y))), math.max(core.double, quad[S._point0].z, math.max(core.double, quad[S._point1].z, math.max(core.double, quad[S._point2].z, quad[S._point3].z))));
+    }
+    setObb3(obb) {
+      if (obb == null) dart.nullFailed(I[2], 127, 21, "obb");
+      let corner = new vector_math_64.Vector3.zero();
+      obb.copyCorner(0, corner);
+      this[S._min].setFrom(corner);
+      this[S._max].setFrom(corner);
+      obb.copyCorner(1, corner);
+      this.hullPoint(corner);
+      obb.copyCorner(2, corner);
+      this.hullPoint(corner);
+      obb.copyCorner(3, corner);
+      this.hullPoint(corner);
+      obb.copyCorner(4, corner);
+      this.hullPoint(corner);
+      obb.copyCorner(5, corner);
+      this.hullPoint(corner);
+      obb.copyCorner(6, corner);
+      this.hullPoint(corner);
+      obb.copyCorner(7, corner);
+      this.hullPoint(corner);
+    }
+    setRay(ray, limitMin, limitMax) {
+      let t0;
+      if (ray == null) dart.nullFailed(I[2], 158, 19, "ray");
+      if (limitMin == null) dart.nullFailed(I[2], 158, 31, "limitMin");
+      if (limitMax == null) dart.nullFailed(I[2], 158, 48, "limitMax");
+      t0 = ray;
+      (() => {
+        t0.copyAt(this[S._min], limitMin);
+        t0.copyAt(this[S._max], limitMax);
+        return t0;
+      })();
+      if (dart.notNull(this[S._max].x) < dart.notNull(this[S._min].x)) {
+        let temp = this[S._max].x;
+        this[S._max].x = this[S._min].x;
+        this[S._min].x = temp;
+      }
+      if (dart.notNull(this[S._max].y) < dart.notNull(this[S._min].y)) {
+        let temp = this[S._max].y;
+        this[S._max].y = this[S._min].y;
+        this[S._min].y = temp;
+      }
+      if (dart.notNull(this[S._max].z) < dart.notNull(this[S._min].z)) {
+        let temp = this[S._max].z;
+        this[S._max].z = this[S._min].z;
+        this[S._min].z = temp;
+      }
+    }
+    copyCenterAndHalfExtents(center, halfExtents) {
+      let t0, t0$;
+      if (center == null) dart.nullFailed(I[2], 181, 41, "center");
+      if (halfExtents == null) dart.nullFailed(I[2], 181, 57, "halfExtents");
+      t0 = center;
+      (() => {
+        t0.setFrom(this[S._min]);
+        t0.add(this[S._max]);
+        t0.scale(0.5);
+        return t0;
+      })();
+      t0$ = halfExtents;
+      (() => {
+        t0$.setFrom(this[S._max]);
+        t0$.sub(this[S._min]);
+        t0$.scale(0.5);
+        return t0$;
+      })();
+    }
+    copyCenter(center) {
+      let t0;
+      if (center == null) dart.nullFailed(I[2], 193, 27, "center");
+      t0 = center;
+      (() => {
+        t0.setFrom(this[S._min]);
+        t0.add(this[S._max]);
+        t0.scale(0.5);
+        return t0;
+      })();
+    }
+    copyFrom(other) {
+      if (other == null) dart.nullFailed(I[2], 201, 23, "other");
+      this[S._min].setFrom(other[S._min]);
+      this[S._max].setFrom(other[S._max]);
+    }
+    [S._updateCenterAndHalfExtents]() {
+      return this.copyCenterAndHalfExtents(vector_math_64.Aabb3._center, vector_math_64.Aabb3._halfExtents);
+    }
+    transform(t) {
+      let t0, t0$, t0$0;
+      if (t == null) dart.nullFailed(I[2], 212, 26, "t");
+      this[S._updateCenterAndHalfExtents]();
+      t0 = t;
+      (() => {
+        t0.transform3(vector_math_64.Aabb3._center);
+        t0.absoluteRotate(vector_math_64.Aabb3._halfExtents);
+        return t0;
+      })();
+      t0$ = this[S._min];
+      (() => {
+        t0$.setFrom(vector_math_64.Aabb3._center);
+        t0$.sub(vector_math_64.Aabb3._halfExtents);
+        return t0$;
+      })();
+      t0$0 = this[S._max];
+      (() => {
+        t0$0.setFrom(vector_math_64.Aabb3._center);
+        t0$0.add(vector_math_64.Aabb3._halfExtents);
+        return t0$0;
+      })();
+    }
+    rotate(t) {
+      let t0, t0$;
+      if (t == null) dart.nullFailed(I[2], 226, 23, "t");
+      this[S._updateCenterAndHalfExtents]();
+      t.absoluteRotate(vector_math_64.Aabb3._halfExtents);
+      t0 = this[S._min];
+      (() => {
+        t0.setFrom(vector_math_64.Aabb3._center);
+        t0.sub(vector_math_64.Aabb3._halfExtents);
+        return t0;
+      })();
+      t0$ = this[S._max];
+      (() => {
+        t0$.setFrom(vector_math_64.Aabb3._center);
+        t0$.add(vector_math_64.Aabb3._halfExtents);
+        return t0$;
+      })();
+    }
+    transformed(t, out) {
+      let t0;
+      if (t == null) dart.nullFailed(I[2], 239, 29, "t");
+      if (out == null) dart.nullFailed(I[2], 239, 38, "out");
+      t0 = out;
+      return (() => {
+        t0.copyFrom(this);
+        t0.transform(t);
+        return t0;
+      })();
+    }
+    rotated(t, out) {
+      let t0;
+      if (t == null) dart.nullFailed(I[2], 245, 25, "t");
+      if (out == null) dart.nullFailed(I[2], 245, 34, "out");
+      t0 = out;
+      return (() => {
+        t0.copyFrom(this);
+        t0.rotate(t);
+        return t0;
+      })();
+    }
+    getPN(planeNormal, outP, outN) {
+      if (planeNormal == null) dart.nullFailed(I[2], 249, 22, "planeNormal");
+      if (outP == null) dart.nullFailed(I[2], 249, 43, "outP");
+      if (outN == null) dart.nullFailed(I[2], 249, 57, "outN");
+      if (dart.notNull(planeNormal.x) < 0.0) {
+        outP.x = this[S._min].x;
+        outN.x = this[S._max].x;
+      } else {
+        outP.x = this[S._max].x;
+        outN.x = this[S._min].x;
+      }
+      if (dart.notNull(planeNormal.y) < 0.0) {
+        outP.y = this[S._min].y;
+        outN.y = this[S._max].y;
+      } else {
+        outP.y = this[S._max].y;
+        outN.y = this[S._min].y;
+      }
+      if (dart.notNull(planeNormal.z) < 0.0) {
+        outP.z = this[S._min].z;
+        outN.z = this[S._max].z;
+      } else {
+        outP.z = this[S._max].z;
+        outN.z = this[S._min].z;
+      }
+    }
+    hull(other) {
+      if (other == null) dart.nullFailed(I[2], 277, 19, "other");
+      vector_math_64.Vector3.min(this[S._min], other[S._min], this[S._min]);
+      vector_math_64.Vector3.max(this[S._max], other[S._max], this[S._max]);
+    }
+    hullPoint(point) {
+      if (point == null) dart.nullFailed(I[2], 283, 26, "point");
+      vector_math_64.Vector3.min(this[S._min], point, this[S._min]);
+      vector_math_64.Vector3.max(this[S._max], point, this[S._max]);
+    }
+    containsAabb3(other) {
+      if (other == null) dart.nullFailed(I[2], 289, 28, "other");
+      let otherMax = other[S._max];
+      let otherMin = other[S._min];
+      return dart.notNull(this[S._min].x) < dart.notNull(otherMin.x) && dart.notNull(this[S._min].y) < dart.notNull(otherMin.y) && dart.notNull(this[S._min].z) < dart.notNull(otherMin.z) && dart.notNull(this[S._max].x) > dart.notNull(otherMax.x) && dart.notNull(this[S._max].y) > dart.notNull(otherMax.y) && dart.notNull(this[S._max].z) > dart.notNull(otherMax.z);
+    }
+    containsSphere(other) {
+      if (other == null) dart.nullFailed(I[2], 302, 30, "other");
+      let boxExtends = vector_math_64.Vector3.all(other.radius);
+      let sphereBox = vector_math_64.Aabb3.centerAndHalfExtents(other[S._center], boxExtends);
+      return this.containsAabb3(sphereBox);
+    }
+    containsVector3(other) {
+      if (other == null) dart.nullFailed(I[2], 310, 32, "other");
+      return dart.notNull(this[S._min].x) < dart.notNull(other.x) && dart.notNull(this[S._min].y) < dart.notNull(other.y) && dart.notNull(this[S._min].z) < dart.notNull(other.z) && dart.notNull(this[S._max].x) > dart.notNull(other.x) && dart.notNull(this[S._max].y) > dart.notNull(other.y) && dart.notNull(this[S._max].z) > dart.notNull(other.z);
+    }
+    containsTriangle(other) {
+      if (other == null) dart.nullFailed(I[2], 319, 34, "other");
+      return dart.test(this.containsVector3(other[S._point0])) && dart.test(this.containsVector3(other[S._point1])) && dart.test(this.containsVector3(other[S._point2]));
+    }
+    intersectsWithAabb3(other) {
+      if (other == null) dart.nullFailed(I[2], 325, 34, "other");
+      let otherMax = other[S._max];
+      let otherMin = other[S._min];
+      return dart.notNull(this[S._min].x) <= dart.notNull(otherMax.x) && dart.notNull(this[S._min].y) <= dart.notNull(otherMax.y) && dart.notNull(this[S._min].z) <= dart.notNull(otherMax.z) && dart.notNull(this[S._max].x) >= dart.notNull(otherMin.x) && dart.notNull(this[S._max].y) >= dart.notNull(otherMin.y) && dart.notNull(this[S._max].z) >= dart.notNull(otherMin.z);
+    }
+    intersectsWithSphere(other) {
+      if (other == null) dart.nullFailed(I[2], 338, 36, "other");
+      let center = other[S._center];
+      let radius = other.radius;
+      let d = 0.0;
+      let e = 0.0;
+      for (let i = 0; i < 3; i = i + 1) {
+        if ((e = dart.notNull(center._get(i)) - dart.notNull(this[S._min]._get(i))) < 0.0) {
+          if (e < -dart.notNull(radius)) {
+            return false;
+          }
+          d = d + e * e;
+        } else {
+          if ((e = dart.notNull(center._get(i)) - dart.notNull(this[S._max]._get(i))) > 0.0) {
+            if (e > dart.notNull(radius)) {
+              return false;
+            }
+            d = d + e * e;
+          }
+        }
+      }
+      return d <= dart.notNull(radius) * dart.notNull(radius);
+    }
+    intersectsWithVector3(other) {
+      if (other == null) dart.nullFailed(I[2], 366, 38, "other");
+      return dart.notNull(this[S._min].x) <= dart.notNull(other.x) && dart.notNull(this[S._min].y) <= dart.notNull(other.y) && dart.notNull(this[S._min].z) <= dart.notNull(other.z) && dart.notNull(this[S._max].x) >= dart.notNull(other.x) && dart.notNull(this[S._max].y) >= dart.notNull(other.y) && dart.notNull(this[S._max].z) >= dart.notNull(other.z);
+    }
+    intersectsWithTriangle(other, opts) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+      if (other == null) dart.nullFailed(I[2], 394, 40, "other");
+      let epsilon = opts && 'epsilon' in opts ? opts.epsilon : 0.001;
+      if (epsilon == null) dart.nullFailed(I[2], 395, 15, "epsilon");
+      let result = opts && 'result' in opts ? opts.result : null;
+      let p0 = null;
+      let p1 = null;
+      let p2 = null;
+      let r = null;
+      let len = null;
+      let a = null;
+      this.copyCenterAndHalfExtents(vector_math_64.Aabb3._aabbCenter, vector_math_64.Aabb3._aabbHalfExtents);
+      t0 = vector_math_64.Aabb3._v0;
+      (() => {
+        t0.setFrom(other.point0);
+        t0.sub(vector_math_64.Aabb3._aabbCenter);
+        return t0;
+      })();
+      t0$ = vector_math_64.Aabb3._v1;
+      (() => {
+        t0$.setFrom(other.point1);
+        t0$.sub(vector_math_64.Aabb3._aabbCenter);
+        return t0$;
+      })();
+      t0$0 = vector_math_64.Aabb3._v2;
+      (() => {
+        t0$0.setFrom(other.point2);
+        t0$0.sub(vector_math_64.Aabb3._aabbCenter);
+        return t0$0;
+      })();
+      t0$1 = vector_math_64.Aabb3._f0;
+      (() => {
+        t0$1.setFrom(vector_math_64.Aabb3._v1);
+        t0$1.sub(vector_math_64.Aabb3._v0);
+        return t0$1;
+      })();
+      t0$2 = vector_math_64.Aabb3._f1;
+      (() => {
+        t0$2.setFrom(vector_math_64.Aabb3._v2);
+        t0$2.sub(vector_math_64.Aabb3._v1);
+        return t0$2;
+      })();
+      t0$3 = vector_math_64.Aabb3._f2;
+      (() => {
+        t0$3.setFrom(vector_math_64.Aabb3._v0);
+        t0$3.sub(vector_math_64.Aabb3._v2);
+        return t0$3;
+      })();
+      len = dart.notNull(vector_math_64.Aabb3._f0.y) * dart.notNull(vector_math_64.Aabb3._f0.y) + dart.notNull(vector_math_64.Aabb3._f0.z) * dart.notNull(vector_math_64.Aabb3._f0.z);
+      if (dart.notNull(len) > dart.notNull(epsilon)) {
+        p0 = dart.notNull(vector_math_64.Aabb3._v0.z) * dart.notNull(vector_math_64.Aabb3._f0.y) - dart.notNull(vector_math_64.Aabb3._v0.y) * dart.notNull(vector_math_64.Aabb3._f0.z);
+        p2 = dart.notNull(vector_math_64.Aabb3._v2.z) * dart.notNull(vector_math_64.Aabb3._f0.y) - dart.notNull(vector_math_64.Aabb3._v2.y) * dart.notNull(vector_math_64.Aabb3._f0.z);
+        r = dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(1)) * vector_math_64.Aabb3._f0.z[S.$abs]() + dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(2)) * vector_math_64.Aabb3._f0.y[S.$abs]();
+        if (math.max(core.double, -math.max(core.double, p0, p2), math.min(core.double, p0, p2)) > dart.notNull(r) + dart.notNull(epsilon)) {
+          return false;
+        }
+        a = math.min(core.double, p0, p2) - dart.notNull(r);
+        if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+          result[S._depth] = a;
+          vector_math_64.Aabb3._u0.crossInto(vector_math_64.Aabb3._f0, result.axis);
+        }
+      }
+      len = dart.notNull(vector_math_64.Aabb3._f1.y) * dart.notNull(vector_math_64.Aabb3._f1.y) + dart.notNull(vector_math_64.Aabb3._f1.z) * dart.notNull(vector_math_64.Aabb3._f1.z);
+      if (dart.notNull(len) > dart.notNull(epsilon)) {
+        p0 = dart.notNull(vector_math_64.Aabb3._v0.z) * dart.notNull(vector_math_64.Aabb3._f1.y) - dart.notNull(vector_math_64.Aabb3._v0.y) * dart.notNull(vector_math_64.Aabb3._f1.z);
+        p1 = dart.notNull(vector_math_64.Aabb3._v1.z) * dart.notNull(vector_math_64.Aabb3._f1.y) - dart.notNull(vector_math_64.Aabb3._v1.y) * dart.notNull(vector_math_64.Aabb3._f1.z);
+        r = dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(1)) * vector_math_64.Aabb3._f1.z[S.$abs]() + dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(2)) * vector_math_64.Aabb3._f1.y[S.$abs]();
+        if (math.max(core.double, -math.max(core.double, p0, p1), math.min(core.double, p0, p1)) > dart.notNull(r) + dart.notNull(epsilon)) {
+          return false;
+        }
+        a = math.min(core.double, p0, p1) - dart.notNull(r);
+        if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+          result[S._depth] = a;
+          vector_math_64.Aabb3._u0.crossInto(vector_math_64.Aabb3._f1, result.axis);
+        }
+      }
+      len = dart.notNull(vector_math_64.Aabb3._f2.y) * dart.notNull(vector_math_64.Aabb3._f2.y) + dart.notNull(vector_math_64.Aabb3._f2.z) * dart.notNull(vector_math_64.Aabb3._f2.z);
+      if (dart.notNull(len) > dart.notNull(epsilon)) {
+        p0 = dart.notNull(vector_math_64.Aabb3._v0.z) * dart.notNull(vector_math_64.Aabb3._f2.y) - dart.notNull(vector_math_64.Aabb3._v0.y) * dart.notNull(vector_math_64.Aabb3._f2.z);
+        p1 = dart.notNull(vector_math_64.Aabb3._v1.z) * dart.notNull(vector_math_64.Aabb3._f2.y) - dart.notNull(vector_math_64.Aabb3._v1.y) * dart.notNull(vector_math_64.Aabb3._f2.z);
+        r = dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(1)) * vector_math_64.Aabb3._f2.z[S.$abs]() + dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(2)) * vector_math_64.Aabb3._f2.y[S.$abs]();
+        if (math.max(core.double, -math.max(core.double, p0, p1), math.min(core.double, p0, p1)) > dart.notNull(r) + dart.notNull(epsilon)) {
+          return false;
+        }
+        a = math.min(core.double, p0, p1) - dart.notNull(r);
+        if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+          result[S._depth] = a;
+          vector_math_64.Aabb3._u0.crossInto(vector_math_64.Aabb3._f2, result.axis);
+        }
+      }
+      len = dart.notNull(vector_math_64.Aabb3._f0.x) * dart.notNull(vector_math_64.Aabb3._f0.x) + dart.notNull(vector_math_64.Aabb3._f0.z) * dart.notNull(vector_math_64.Aabb3._f0.z);
+      if (dart.notNull(len) > dart.notNull(epsilon)) {
+        p0 = dart.notNull(vector_math_64.Aabb3._v0.x) * dart.notNull(vector_math_64.Aabb3._f0.z) - dart.notNull(vector_math_64.Aabb3._v0.z) * dart.notNull(vector_math_64.Aabb3._f0.x);
+        p2 = dart.notNull(vector_math_64.Aabb3._v2.x) * dart.notNull(vector_math_64.Aabb3._f0.z) - dart.notNull(vector_math_64.Aabb3._v2.z) * dart.notNull(vector_math_64.Aabb3._f0.x);
+        r = dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(0)) * vector_math_64.Aabb3._f0.z[S.$abs]() + dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(2)) * vector_math_64.Aabb3._f0.x[S.$abs]();
+        if (math.max(core.double, -math.max(core.double, p0, p2), math.min(core.double, p0, p2)) > dart.notNull(r) + dart.notNull(epsilon)) {
+          return false;
+        }
+        a = math.min(core.double, p0, p2) - dart.notNull(r);
+        if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+          result[S._depth] = a;
+          vector_math_64.Aabb3._u1.crossInto(vector_math_64.Aabb3._f0, result.axis);
+        }
+      }
+      len = dart.notNull(vector_math_64.Aabb3._f1.x) * dart.notNull(vector_math_64.Aabb3._f1.x) + dart.notNull(vector_math_64.Aabb3._f1.z) * dart.notNull(vector_math_64.Aabb3._f1.z);
+      if (dart.notNull(len) > dart.notNull(epsilon)) {
+        p0 = dart.notNull(vector_math_64.Aabb3._v0.x) * dart.notNull(vector_math_64.Aabb3._f1.z) - dart.notNull(vector_math_64.Aabb3._v0.z) * dart.notNull(vector_math_64.Aabb3._f1.x);
+        p1 = dart.notNull(vector_math_64.Aabb3._v1.x) * dart.notNull(vector_math_64.Aabb3._f1.z) - dart.notNull(vector_math_64.Aabb3._v1.z) * dart.notNull(vector_math_64.Aabb3._f1.x);
+        r = dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(0)) * vector_math_64.Aabb3._f1.z[S.$abs]() + dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(2)) * vector_math_64.Aabb3._f1.x[S.$abs]();
+        if (math.max(core.double, -math.max(core.double, p0, p1), math.min(core.double, p0, p1)) > dart.notNull(r) + dart.notNull(epsilon)) {
+          return false;
+        }
+        a = math.min(core.double, p0, p1) - dart.notNull(r);
+        if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+          result[S._depth] = a;
+          vector_math_64.Aabb3._u1.crossInto(vector_math_64.Aabb3._f1, result.axis);
+        }
+      }
+      len = dart.notNull(vector_math_64.Aabb3._f2.x) * dart.notNull(vector_math_64.Aabb3._f2.x) + dart.notNull(vector_math_64.Aabb3._f2.z) * dart.notNull(vector_math_64.Aabb3._f2.z);
+      if (dart.notNull(len) > dart.notNull(epsilon)) {
+        p0 = dart.notNull(vector_math_64.Aabb3._v0.x) * dart.notNull(vector_math_64.Aabb3._f2.z) - dart.notNull(vector_math_64.Aabb3._v0.z) * dart.notNull(vector_math_64.Aabb3._f2.x);
+        p1 = dart.notNull(vector_math_64.Aabb3._v1.x) * dart.notNull(vector_math_64.Aabb3._f2.z) - dart.notNull(vector_math_64.Aabb3._v1.z) * dart.notNull(vector_math_64.Aabb3._f2.x);
+        r = dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(0)) * vector_math_64.Aabb3._f2.z[S.$abs]() + dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(2)) * vector_math_64.Aabb3._f2.x[S.$abs]();
+        if (math.max(core.double, -math.max(core.double, p0, p1), math.min(core.double, p0, p1)) > dart.notNull(r) + dart.notNull(epsilon)) {
+          return false;
+        }
+        a = math.min(core.double, p0, p1) - dart.notNull(r);
+        if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+          result[S._depth] = a;
+          vector_math_64.Aabb3._u1.crossInto(vector_math_64.Aabb3._f2, result.axis);
+        }
+      }
+      len = dart.notNull(vector_math_64.Aabb3._f0.x) * dart.notNull(vector_math_64.Aabb3._f0.x) + dart.notNull(vector_math_64.Aabb3._f0.y) * dart.notNull(vector_math_64.Aabb3._f0.y);
+      if (dart.notNull(len) > dart.notNull(epsilon)) {
+        p0 = dart.notNull(vector_math_64.Aabb3._v0.y) * dart.notNull(vector_math_64.Aabb3._f0.x) - dart.notNull(vector_math_64.Aabb3._v0.x) * dart.notNull(vector_math_64.Aabb3._f0.y);
+        p2 = dart.notNull(vector_math_64.Aabb3._v2.y) * dart.notNull(vector_math_64.Aabb3._f0.x) - dart.notNull(vector_math_64.Aabb3._v2.x) * dart.notNull(vector_math_64.Aabb3._f0.y);
+        r = dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(0)) * vector_math_64.Aabb3._f0.y[S.$abs]() + dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(1)) * vector_math_64.Aabb3._f0.x[S.$abs]();
+        if (math.max(core.double, -math.max(core.double, p0, p2), math.min(core.double, p0, p2)) > dart.notNull(r) + dart.notNull(epsilon)) {
+          return false;
+        }
+        a = math.min(core.double, p0, p2) - dart.notNull(r);
+        if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+          result[S._depth] = a;
+          vector_math_64.Aabb3._u2.crossInto(vector_math_64.Aabb3._f0, result.axis);
+        }
+      }
+      len = dart.notNull(vector_math_64.Aabb3._f1.x) * dart.notNull(vector_math_64.Aabb3._f1.x) + dart.notNull(vector_math_64.Aabb3._f1.y) * dart.notNull(vector_math_64.Aabb3._f1.y);
+      if (dart.notNull(len) > dart.notNull(epsilon)) {
+        p0 = dart.notNull(vector_math_64.Aabb3._v0.y) * dart.notNull(vector_math_64.Aabb3._f1.x) - dart.notNull(vector_math_64.Aabb3._v0.x) * dart.notNull(vector_math_64.Aabb3._f1.y);
+        p1 = dart.notNull(vector_math_64.Aabb3._v1.y) * dart.notNull(vector_math_64.Aabb3._f1.x) - dart.notNull(vector_math_64.Aabb3._v1.x) * dart.notNull(vector_math_64.Aabb3._f1.y);
+        r = dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(0)) * vector_math_64.Aabb3._f1.y[S.$abs]() + dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(1)) * vector_math_64.Aabb3._f1.x[S.$abs]();
+        if (math.max(core.double, -math.max(core.double, p0, p1), math.min(core.double, p0, p1)) > dart.notNull(r) + dart.notNull(epsilon)) {
+          return false;
+        }
+        a = math.min(core.double, p0, p1) - dart.notNull(r);
+        if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+          result[S._depth] = a;
+          vector_math_64.Aabb3._u2.crossInto(vector_math_64.Aabb3._f1, result.axis);
+        }
+      }
+      len = dart.notNull(vector_math_64.Aabb3._f2.x) * dart.notNull(vector_math_64.Aabb3._f2.x) + dart.notNull(vector_math_64.Aabb3._f2.y) * dart.notNull(vector_math_64.Aabb3._f2.y);
+      if (dart.notNull(len) > dart.notNull(epsilon)) {
+        p0 = dart.notNull(vector_math_64.Aabb3._v0.y) * dart.notNull(vector_math_64.Aabb3._f2.x) - dart.notNull(vector_math_64.Aabb3._v0.x) * dart.notNull(vector_math_64.Aabb3._f2.y);
+        p1 = dart.notNull(vector_math_64.Aabb3._v1.y) * dart.notNull(vector_math_64.Aabb3._f2.x) - dart.notNull(vector_math_64.Aabb3._v1.x) * dart.notNull(vector_math_64.Aabb3._f2.y);
+        r = dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(0)) * vector_math_64.Aabb3._f2.y[S.$abs]() + dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(1)) * vector_math_64.Aabb3._f2.x[S.$abs]();
+        if (math.max(core.double, -math.max(core.double, p0, p1), math.min(core.double, p0, p1)) > dart.notNull(r) + dart.notNull(epsilon)) {
+          return false;
+        }
+        a = math.min(core.double, p0, p1) - dart.notNull(r);
+        if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+          result[S._depth] = a;
+          vector_math_64.Aabb3._u2.crossInto(vector_math_64.Aabb3._f2, result.axis);
+        }
+      }
+      if (math.max(core.double, vector_math_64.Aabb3._v0.x, math.max(core.double, vector_math_64.Aabb3._v1.x, vector_math_64.Aabb3._v2.x)) < -dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(0)) || math.min(core.double, vector_math_64.Aabb3._v0.x, math.min(core.double, vector_math_64.Aabb3._v1.x, vector_math_64.Aabb3._v2.x)) > dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(0))) {
+        return false;
+      }
+      a = math.min(core.double, vector_math_64.Aabb3._v0.x, math.min(core.double, vector_math_64.Aabb3._v1.x, vector_math_64.Aabb3._v2.x)) - dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(0));
+      if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+        result[S._depth] = a;
+        result.axis.setFrom(vector_math_64.Aabb3._u0);
+      }
+      if (math.max(core.double, vector_math_64.Aabb3._v0.y, math.max(core.double, vector_math_64.Aabb3._v1.y, vector_math_64.Aabb3._v2.y)) < -dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(1)) || math.min(core.double, vector_math_64.Aabb3._v0.y, math.min(core.double, vector_math_64.Aabb3._v1.y, vector_math_64.Aabb3._v2.y)) > dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(1))) {
+        return false;
+      }
+      a = math.min(core.double, vector_math_64.Aabb3._v0.y, math.min(core.double, vector_math_64.Aabb3._v1.y, vector_math_64.Aabb3._v2.y)) - dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(1));
+      if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+        result[S._depth] = a;
+        result.axis.setFrom(vector_math_64.Aabb3._u1);
+      }
+      if (math.max(core.double, vector_math_64.Aabb3._v0.z, math.max(core.double, vector_math_64.Aabb3._v1.z, vector_math_64.Aabb3._v2.z)) < -dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(2)) || math.min(core.double, vector_math_64.Aabb3._v0.z, math.min(core.double, vector_math_64.Aabb3._v1.z, vector_math_64.Aabb3._v2.z)) > dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(2))) {
+        return false;
+      }
+      a = math.min(core.double, vector_math_64.Aabb3._v0.z, math.min(core.double, vector_math_64.Aabb3._v1.z, vector_math_64.Aabb3._v2.z)) - dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(2));
+      if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < dart.notNull(a))) {
+        result[S._depth] = a;
+        result.axis.setFrom(vector_math_64.Aabb3._u2);
+      }
+      vector_math_64.Aabb3._v0.add(vector_math_64.Aabb3._aabbCenter);
+      vector_math_64.Aabb3._f0.crossInto(vector_math_64.Aabb3._f1, vector_math_64.Aabb3._trianglePlane.normal);
+      vector_math_64.Aabb3._trianglePlane.constant = vector_math_64.Aabb3._trianglePlane.normal.dot(vector_math_64.Aabb3._v0);
+      return this.intersectsWithPlane(vector_math_64.Aabb3._trianglePlane, {result: result});
+    }
+    intersectsWithPlane(other, opts) {
+      if (other == null) dart.nullFailed(I[2], 631, 34, "other");
+      let result = opts && 'result' in opts ? opts.result : null;
+      this.copyCenterAndHalfExtents(vector_math_64.Aabb3._aabbCenter, vector_math_64.Aabb3._aabbHalfExtents);
+      let r = dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(0)) * other.normal._get(0)[S.$abs]() + dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(1)) * other.normal._get(1)[S.$abs]() + dart.notNull(vector_math_64.Aabb3._aabbHalfExtents._get(2)) * other.normal._get(2)[S.$abs]();
+      let s = dart.notNull(other.normal.dot(vector_math_64.Aabb3._aabbCenter)) - dart.notNull(other.constant);
+      if (s[S.$abs]() <= r) {
+        let a = s - r;
+        if (result != null && (result[S._depth] == null || dart.nullCheck(result[S._depth]) < a)) {
+          result[S._depth] = a;
+          result.axis.setFrom(other.normal);
+        }
+        return true;
+      }
+      return false;
+    }
+    intersectsWithQuad(other, opts) {
+      if (other == null) dart.nullFailed(I[2], 663, 32, "other");
+      let result = opts && 'result' in opts ? opts.result : null;
+      other.copyTriangles(vector_math_64.Aabb3._quadTriangle0, vector_math_64.Aabb3._quadTriangle1);
+      return dart.test(this.intersectsWithTriangle(vector_math_64.Aabb3._quadTriangle0, {result: result})) || dart.test(this.intersectsWithTriangle(vector_math_64.Aabb3._quadTriangle1, {result: result}));
+    }
+  };
+  (vector_math_64.Aabb3.new = function() {
+    this[S._min] = new vector_math_64.Vector3.zero();
+    this[S._max] = new vector_math_64.Vector3.zero();
+    ;
+  }).prototype = vector_math_64.Aabb3.prototype;
+  (vector_math_64.Aabb3.copy = function(other) {
+    if (other == null) dart.nullFailed(I[2], 27, 20, "other");
+    this[S._min] = vector_math_64.Vector3.copy(other[S._min]);
+    this[S._max] = vector_math_64.Vector3.copy(other[S._max]);
+    ;
+  }).prototype = vector_math_64.Aabb3.prototype;
+  (vector_math_64.Aabb3.minMax = function(min, max) {
+    if (min == null) dart.nullFailed(I[2], 32, 24, "min");
+    if (max == null) dart.nullFailed(I[2], 32, 37, "max");
+    this[S._min] = vector_math_64.Vector3.copy(min);
+    this[S._max] = vector_math_64.Vector3.copy(max);
+    ;
+  }).prototype = vector_math_64.Aabb3.prototype;
+  (vector_math_64.Aabb3.fromBuffer = function(buffer, offset) {
+    if (buffer == null) dart.nullFailed(I[2], 61, 31, "buffer");
+    if (offset == null) dart.nullFailed(I[2], 61, 43, "offset");
+    this[S._min] = new vector_math_64.Vector3.fromBuffer(buffer, offset);
+    this[S._max] = new vector_math_64.Vector3.fromBuffer(buffer, dart.notNull(offset) + 8 * 3);
+    ;
+  }).prototype = vector_math_64.Aabb3.prototype;
+  dart.addTypeTests(vector_math_64.Aabb3);
+  dart.addTypeCaches(vector_math_64.Aabb3);
+  dart.setMethodSignature(vector_math_64.Aabb3, () => ({
+    __proto__: dart.getMethods(vector_math_64.Aabb3.__proto__),
+    setCenterAndHalfExtents: dart.fnType(dart.void, [vector_math_64.Vector3, vector_math_64.Vector3]),
+    setSphere: dart.fnType(dart.void, [vector_math_64.Sphere]),
+    setTriangle: dart.fnType(dart.void, [vector_math_64.Triangle]),
+    setQuad: dart.fnType(dart.void, [vector_math_64.Quad]),
+    setObb3: dart.fnType(dart.void, [vector_math_64.Obb3]),
+    setRay: dart.fnType(dart.void, [vector_math_64.Ray, core.double, core.double]),
+    copyCenterAndHalfExtents: dart.fnType(dart.void, [vector_math_64.Vector3, vector_math_64.Vector3]),
+    copyCenter: dart.fnType(dart.void, [vector_math_64.Vector3]),
+    copyFrom: dart.fnType(dart.void, [vector_math_64.Aabb3]),
+    [S._updateCenterAndHalfExtents]: dart.fnType(dart.void, []),
+    transform: dart.fnType(dart.void, [vector_math_64.Matrix4]),
+    rotate: dart.fnType(dart.void, [vector_math_64.Matrix4]),
+    transformed: dart.fnType(vector_math_64.Aabb3, [vector_math_64.Matrix4, vector_math_64.Aabb3]),
+    rotated: dart.fnType(vector_math_64.Aabb3, [vector_math_64.Matrix4, vector_math_64.Aabb3]),
+    getPN: dart.fnType(dart.void, [vector_math_64.Vector3, vector_math_64.Vector3, vector_math_64.Vector3]),
+    hull: dart.fnType(dart.void, [vector_math_64.Aabb3]),
+    hullPoint: dart.fnType(dart.void, [vector_math_64.Vector3]),
+    containsAabb3: dart.fnType(core.bool, [vector_math_64.Aabb3]),
+    containsSphere: dart.fnType(core.bool, [vector_math_64.Sphere]),
+    containsVector3: dart.fnType(core.bool, [vector_math_64.Vector3]),
+    containsTriangle: dart.fnType(core.bool, [vector_math_64.Triangle]),
+    intersectsWithAabb3: dart.fnType(core.bool, [vector_math_64.Aabb3]),
+    intersectsWithSphere: dart.fnType(core.bool, [vector_math_64.Sphere]),
+    intersectsWithVector3: dart.fnType(core.bool, [vector_math_64.Vector3]),
+    intersectsWithTriangle: dart.fnType(core.bool, [vector_math_64.Triangle], {epsilon: core.double, result: dart.nullable(vector_math_64.IntersectionResult)}, {}),
+    intersectsWithPlane: dart.fnType(core.bool, [vector_math_64.Plane], {result: dart.nullable(vector_math_64.IntersectionResult)}, {}),
+    intersectsWithQuad: dart.fnType(core.bool, [vector_math_64.Quad], {result: dart.nullable(vector_math_64.IntersectionResult)}, {})
+  }));
+  dart.setGetterSignature(vector_math_64.Aabb3, () => ({
+    __proto__: dart.getGetters(vector_math_64.Aabb3.__proto__),
+    min: vector_math_64.Vector3,
+    max: vector_math_64.Vector3,
+    center: vector_math_64.Vector3
+  }));
+  dart.setLibraryUri(vector_math_64.Aabb3, I[1]);
+  dart.setFieldSignature(vector_math_64.Aabb3, () => ({
+    __proto__: dart.getFields(vector_math_64.Aabb3.__proto__),
+    [S._min]: dart.finalFieldType(vector_math_64.Vector3),
+    [S._max]: dart.finalFieldType(vector_math_64.Vector3)
+  }));
+  dart.defineLazy(vector_math_64.Aabb3, {
+    /*vector_math_64.Aabb3._center*/get _center() {
+      return new vector_math_64.Vector3.zero();
+    },
+    /*vector_math_64.Aabb3._halfExtents*/get _halfExtents() {
+      return new vector_math_64.Vector3.zero();
+    },
+    /*vector_math_64.Aabb3._aabbCenter*/get _aabbCenter() {
+      return new vector_math_64.Vector3.zero();
+    },
+    /*vector_math_64.Aabb3._aabbHalfExtents*/get _aabbHalfExtents() {
+      return new vector_math_64.Vector3.zero();
+    },
+    /*vector_math_64.Aabb3._v0*/get _v0() {
+      return new vector_math_64.Vector3.zero();
+    },
+    /*vector_math_64.Aabb3._v1*/get _v1() {
+      return new vector_math_64.Vector3.zero();
+    },
+    /*vector_math_64.Aabb3._v2*/get _v2() {
+      return new vector_math_64.Vector3.zero();
+    },
+    /*vector_math_64.Aabb3._f0*/get _f0() {
+      return new vector_math_64.Vector3.zero();
+    },
+    /*vector_math_64.Aabb3._f1*/get _f1() {
+      return new vector_math_64.Vector3.zero();
+    },
+    /*vector_math_64.Aabb3._f2*/get _f2() {
+      return new vector_math_64.Vector3.zero();
+    },
+    /*vector_math_64.Aabb3._trianglePlane*/get _trianglePlane() {
+      return new vector_math_64.Plane.new();
+    },
+    /*vector_math_64.Aabb3._u0*/get _u0() {
+      return vector_math_64.Vector3.new(1.0, 0.0, 0.0);
+    },
+    /*vector_math_64.Aabb3._u1*/get _u1() {
+      return vector_math_64.Vector3.new(0.0, 1.0, 0.0);
+    },
+    /*vector_math_64.Aabb3._u2*/get _u2() {
+      return vector_math_64.Vector3.new(0.0, 0.0, 1.0);
+    },
+    /*vector_math_64.Aabb3._quadTriangle0*/get _quadTriangle0() {
+      return new vector_math_64.Triangle.new();
+    },
+    /*vector_math_64.Aabb3._quadTriangle1*/get _quadTriangle1() {
+      return new vector_math_64.Triangle.new();
+    }
+  }, false);
+  vector_math_64.Colors = class Colors extends core.Object {
+    static fromRgba(r, g, b, a, result) {
+      if (r == null) dart.nullFailed(I[3], 20, 28, "r");
+      if (g == null) dart.nullFailed(I[3], 20, 35, "g");
+      if (b == null) dart.nullFailed(I[3], 20, 42, "b");
+      if (a == null) dart.nullFailed(I[3], 20, 49, "a");
+      if (result == null) dart.nullFailed(I[3], 20, 60, "result");
+      result.setValues(dart.notNull(r) / 255.0, dart.notNull(g) / 255.0, dart.notNull(b) / 255.0, dart.notNull(a) / 255.0);
+    }
+    static fromHexString(value, result) {
+      if (value == null) dart.nullFailed(I[3], 28, 36, "value");
+      if (result == null) dart.nullFailed(I[3], 28, 51, "result");
+      let fullMatch = vector_math_64.Colors._hexStringFullRegex[S.$matchAsPrefix](value);
+      if (fullMatch != null) {
+        if (fullMatch._get(4) == null) {
+          let r = core.int.parse(dart.nullCheck(fullMatch._get(1)), {radix: 16});
+          let g = core.int.parse(dart.nullCheck(fullMatch._get(2)), {radix: 16});
+          let b = core.int.parse(dart.nullCheck(fullMatch._get(3)), {radix: 16});
+          vector_math_64.Colors.fromRgba(r, g, b, 255, result);
+          return;
+        } else {
+          let a = core.int.parse(dart.nullCheck(fullMatch._get(1)), {radix: 16});
+          let r = core.int.parse(dart.nullCheck(fullMatch._get(2)), {radix: 16});
+          let g = core.int.parse(dart.nullCheck(fullMatch._get(3)), {radix: 16});
+          let b = core.int.parse(dart.nullCheck(fullMatch._get(4)), {radix: 16});
+          vector_math_64.Colors.fromRgba(r, g, b, a, result);
+          return;
+        }
+      }
+      let smallMatch = vector_math_64.Colors._hexStringSmallRegex[S.$matchAsPrefix](value);
+      if (smallMatch != null) {
+        if (smallMatch._get(4) == null) {
+          let r = core.int.parse(dart.nullCheck(smallMatch._get(1)) + dart.nullCheck(smallMatch._get(1)), {radix: 16});
+          let g = core.int.parse(dart.nullCheck(smallMatch._get(2)) + dart.nullCheck(smallMatch._get(2)), {radix: 16});
+          let b = core.int.parse(dart.nullCheck(smallMatch._get(3)) + dart.nullCheck(smallMatch._get(3)), {radix: 16});
+          vector_math_64.Colors.fromRgba(r, g, b, 255, result);
+          return;
+        } else {
+          let a = core.int.parse(dart.nullCheck(smallMatch._get(1)) + dart.nullCheck(smallMatch._get(1)), {radix: 16});
+          let r = core.int.parse(dart.nullCheck(smallMatch._get(2)) + dart.nullCheck(smallMatch._get(2)), {radix: 16});
+          let g = core.int.parse(dart.nullCheck(smallMatch._get(3)) + dart.nullCheck(smallMatch._get(3)), {radix: 16});
+          let b = core.int.parse(dart.nullCheck(smallMatch._get(4)) + dart.nullCheck(smallMatch._get(4)), {radix: 16});
+          vector_math_64.Colors.fromRgba(r, g, b, a, result);
+          return;
+        }
+      }
+      dart.throw(new core.FormatException.new("Could not parse hex color " + dart.str(value)));
+    }
+    static toHexString(input, opts) {
+      if (input == null) dart.nullFailed(I[3], 78, 37, "input");
+      let alpha = opts && 'alpha' in opts ? opts.alpha : false;
+      if (alpha == null) dart.nullFailed(I[3], 79, 13, "alpha");
+      let short = opts && 'short' in opts ? opts.short : false;
+      if (short == null) dart.nullFailed(I[3], 79, 33, "short");
+      let r = (dart.notNull(input.r) * 255)[S.$floor]() & 255;
+      let g = (dart.notNull(input.g) * 255)[S.$floor]() & 255;
+      let b = (dart.notNull(input.b) * 255)[S.$floor]() & 255;
+      let a = (dart.notNull(input.a) * 255)[S.$floor]() & 255;
+      let isShort = dart.test(short) && r[S.$rightShift](4) === (r & 15) && g[S.$rightShift](4) === (g & 15) && b[S.$rightShift](4) === (b & 15) && (!dart.test(alpha) || a[S.$rightShift](4) === (a & 15));
+      if (isShort) {
+        let rgb = (r & 15)[S.$toRadixString](16) + (g & 15)[S.$toRadixString](16) + (b & 15)[S.$toRadixString](16);
+        return dart.test(alpha) ? (a & 15)[S.$toRadixString](16) + rgb : rgb;
+      } else {
+        let rgb = r[S.$toRadixString](16)[S.$padLeft](2, "0") + g[S.$toRadixString](16)[S.$padLeft](2, "0") + b[S.$toRadixString](16)[S.$padLeft](2, "0");
+        return dart.test(alpha) ? a[S.$toRadixString](16)[S.$padLeft](2, "0") + rgb : rgb;
+      }
+    }
+    static alphaBlend(foreground, background, result) {
+      if (foreground == null) dart.nullFailed(I[3], 109, 15, "foreground");
+      if (background == null) dart.nullFailed(I[3], 109, 35, "background");
+      if (result == null) dart.nullFailed(I[3], 109, 55, "result");
+      let a = dart.notNull(foreground.a) + (1.0 - dart.notNull(foreground.a)) * dart.notNull(background.a);
+      let factor = 1.0 / a;
+      let r = factor * (dart.notNull(foreground.a) * dart.notNull(foreground.r) + (1.0 - dart.notNull(foreground.a)) * dart.notNull(background.a) * dart.notNull(background.r));
+      let g = factor * (dart.notNull(foreground.a) * dart.notNull(foreground.g) + (1.0 - dart.notNull(foreground.a)) * dart.notNull(background.a) * dart.notNull(background.g));
+      let b = factor * (dart.notNull(foreground.a) * dart.notNull(foreground.b) + (1.0 - dart.notNull(foreground.a)) * dart.notNull(background.a) * dart.notNull(background.b));
+      result.setValues(r, g, b, a);
+    }
+    static toGrayscale(input, result) {
+      let t0;
+      if (input == null) dart.nullFailed(I[3], 127, 35, "input");
+      if (result == null) dart.nullFailed(I[3], 127, 50, "result");
+      let value = 0.21 * dart.notNull(input.r) + 0.71 * dart.notNull(input.g) + 0.07 * dart.notNull(input.b);
+      t0 = result;
+      (() => {
+        t0.r = value;
+        t0.g = value;
+        t0.b = value;
+        t0.a = input.a;
+        return t0;
+      })();
+    }
+    static linearToGamma(linearColor, gammaColor, gamma = 2.2) {
+      let t0;
+      if (linearColor == null) dart.nullFailed(I[3], 140, 37, "linearColor");
+      if (gammaColor == null) dart.nullFailed(I[3], 140, 58, "gammaColor");
+      if (gamma == null) dart.nullFailed(I[3], 141, 15, "gamma");
+      let exponent = 1.0 / dart.notNull(gamma);
+      t0 = gammaColor;
+      (() => {
+        t0.r = math.pow(linearColor.r, exponent)[S.$toDouble]();
+        t0.g = math.pow(linearColor.g, exponent)[S.$toDouble]();
+        t0.b = math.pow(linearColor.b, exponent)[S.$toDouble]();
+        t0.a = linearColor.a;
+        return t0;
+      })();
+    }
+    static gammaToLinear(gammaColor, linearColor, gamma = 2.2) {
+      let t0;
+      if (gammaColor == null) dart.nullFailed(I[3], 154, 37, "gammaColor");
+      if (linearColor == null) dart.nullFailed(I[3], 154, 57, "linearColor");
+      if (gamma == null) dart.nullFailed(I[3], 155, 15, "gamma");
+      t0 = linearColor;
+      (() => {
+        t0.r = math.pow(gammaColor.r, gamma)[S.$toDouble]();
+        t0.g = math.pow(gammaColor.g, gamma)[S.$toDouble]();
+        t0.b = math.pow(gammaColor.b, gamma)[S.$toDouble]();
+        t0.a = gammaColor.a;
+        return t0;
+      })();
+    }
+    static rgbToHsv(rgbColor, hsvColor) {
+      if (rgbColor == null) dart.nullFailed(I[3], 165, 32, "rgbColor");
+      if (hsvColor == null) dart.nullFailed(I[3], 165, 50, "hsvColor");
+      let max = math.max(core.double, math.max(core.double, rgbColor.r, rgbColor.g), rgbColor.b);
+      let min = math.min(core.double, math.min(core.double, rgbColor.r, rgbColor.g), rgbColor.b);
+      let d = max - min;
+      let v = max;
+      let s = max === 0.0 ? 0.0 : d / max;
+      let h = 0.0;
+      if (max !== min) {
+        if (max === rgbColor.r) {
+          h = (dart.notNull(rgbColor.g) - dart.notNull(rgbColor.b)) / d + (dart.notNull(rgbColor.g) < dart.notNull(rgbColor.b) ? 6.0 : 0.0);
+        } else if (max === rgbColor.g) {
+          h = (dart.notNull(rgbColor.b) - dart.notNull(rgbColor.r)) / d + 2.0;
+        } else {
+          h = (dart.notNull(rgbColor.r) - dart.notNull(rgbColor.g)) / d + 4.0;
+        }
+        h = h / 6.0;
+      }
+      hsvColor.setValues(h, s, v, rgbColor.a);
+    }
+    static hsvToRgb(hsvColor, rgbColor) {
+      if (hsvColor == null) dart.nullFailed(I[3], 191, 32, "hsvColor");
+      if (rgbColor == null) dart.nullFailed(I[3], 191, 50, "rgbColor");
+      let i = (dart.notNull(hsvColor.x) * 6.0)[S.$floor]();
+      let f = dart.notNull(hsvColor.x) * 6.0 - i[S.$toDouble]();
+      let p = dart.notNull(hsvColor.z) * (1.0 - dart.notNull(hsvColor.y));
+      let q = dart.notNull(hsvColor.z) * (1.0 - f * dart.notNull(hsvColor.y));
+      let t = dart.notNull(hsvColor.z) * (1.0 - (1.0 - f) * dart.notNull(hsvColor.y));
+      switch (i[S.$modulo](6)) {
+        case 0:
+        {
+          rgbColor.setValues(hsvColor.z, t, p, hsvColor.a);
+          break;
+        }
+        case 1:
+        {
+          rgbColor.setValues(q, hsvColor.z, p, hsvColor.a);
+          break;
+        }
+        case 2:
+        {
+          rgbColor.setValues(p, hsvColor.z, t, hsvColor.a);
+          break;
+        }
+        case 3:
+        {
+          rgbColor.setValues(p, q, hsvColor.z, hsvColor.a);
+          break;
+        }
+        case 4:
+        {
+          rgbColor.setValues(t, p, hsvColor.z, hsvColor.a);
+          break;
+        }
+        case 5:
+        {
+          rgbColor.setValues(hsvColor.z, p, q, hsvColor.a);
+          break;
+        }
+      }
+    }
+    static rgbToHsl(rgbColor, hslColor) {
+      if (rgbColor == null) dart.nullFailed(I[3], 222, 32, "rgbColor");
+      if (hslColor == null) dart.nullFailed(I[3], 222, 50, "hslColor");
+      let max = math.max(core.double, math.max(core.double, rgbColor.r, rgbColor.g), rgbColor.b);
+      let min = math.min(core.double, math.min(core.double, rgbColor.r, rgbColor.g), rgbColor.b);
+      let l = (max + min) / 2.0;
+      let h = 0.0;
+      let s = 0.0;
+      if (max !== min) {
+        let d = max - min;
+        s = l > 0.5 ? d / (2.0 - max - min) : d / (max + min);
+        if (max === rgbColor.r) {
+          h = (dart.notNull(rgbColor.g) - dart.notNull(rgbColor.b)) / d + (dart.notNull(rgbColor.g) < dart.notNull(rgbColor.b) ? 6.0 : 0.0);
+        } else if (max === rgbColor.g) {
+          h = (dart.notNull(rgbColor.b) - dart.notNull(rgbColor.r)) / d + 2.0;
+        } else {
+          h = (dart.notNull(rgbColor.r) - dart.notNull(rgbColor.g)) / d + 4.0;
+        }
+        h = h / 6.0;
+      }
+      hslColor.setValues(h, s, l, rgbColor.a);
+    }
+    static hslToRgb(hslColor, rgbColor) {
+      if (hslColor == null) dart.nullFailed(I[3], 251, 32, "hslColor");
+      if (rgbColor == null) dart.nullFailed(I[3], 251, 50, "rgbColor");
+      if (hslColor.y === 0.0) {
+        rgbColor.setValues(hslColor.z, hslColor.z, hslColor.z, hslColor.a);
+      } else {
+        let q = dart.notNull(hslColor.z) < 0.5 ? dart.notNull(hslColor.z) * (1.0 + dart.notNull(hslColor.y)) : dart.notNull(hslColor.z) + dart.notNull(hslColor.y) - dart.notNull(hslColor.z) * dart.notNull(hslColor.y);
+        let p = 2.0 * dart.notNull(hslColor.z) - q;
+        let r = vector_math_64.Colors._hueToRgb(p, q, dart.notNull(hslColor.x) + 1.0 / 3.0);
+        let g = vector_math_64.Colors._hueToRgb(p, q, hslColor.x);
+        let b = vector_math_64.Colors._hueToRgb(p, q, dart.notNull(hslColor.x) - 1.0 / 3.0);
+        rgbColor.setValues(r, g, b, hslColor.a);
+      }
+    }
+    static _hueToRgb(p, q, t) {
+      if (p == null) dart.nullFailed(I[3], 268, 34, "p");
+      if (q == null) dart.nullFailed(I[3], 268, 44, "q");
+      if (t == null) dart.nullFailed(I[3], 268, 54, "t");
